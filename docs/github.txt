@@ -6,3 +6,7 @@ O que é um repositório?
 Serve como um portfolio
 
 www.github.com --> empresa adquirida pela Microsoft
+
+Alguns comandos para configurar o git
+git config --global user.name "pedroborgespj"
+git config --global email "pedroborgespj@gmail.com"
