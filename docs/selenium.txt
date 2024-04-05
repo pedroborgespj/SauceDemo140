@@ -2,3 +2,7 @@ Existem 3 pontos principais de fragilidade em uma automação:
 1 - seletor errado, seletor mudou, seletor dinâmico
 2 - sincronismo (Tipos de Esperas - Waits)
 3 - programação exótica
+
+- Se o elemento no inspect não mostra uma referência específica
+    * .inventory_item:nth-child(1) .inventory_item_price
+    * extensao para ajudar a deduzir: chropath
