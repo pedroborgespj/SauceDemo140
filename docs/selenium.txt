@@ -6,3 +6,18 @@ Existem 3 pontos principais de fragilidade em uma automação:
 - Se o elemento no inspect não mostra uma referência específica
     * .inventory_item:nth-child(1) .inventory_item_price
     * extensao para ajudar a deduzir: chropath
+
+Formas de criação e organização do script
+
+1 - Gravação (Capture & Playback / Record & Play) - Selenium IDE
+2 - Exportação e Importação de código fonte (Script Simples)
+3 - Criar o Script simples manualmente --> 1 script = 1 arquivo
+4 - Script com Cucumber / Behave --> 1 teste = 2 arquivos (.feature em Gherkin e .py que é o script de automação) --> pip install behave
+
+
+BDD = Behavior Driven Development = Desenvolvimento Direcionado por Comportamento
+---> Foco no comportamento esperado do software --> Dito pelo PO (Product Owner)
+
+--> Crtérios de Aceitação --> Sintaxe Gherkin
+Dado - Quando - Então
+cucumber.io
