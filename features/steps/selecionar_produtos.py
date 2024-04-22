@@ -53,6 +53,33 @@ def step_impl(context, usuario, senha):
     
     context.driver.find_element(By.ID, "login-button").click()
 
+@when(u'acesso a página de produtos')
+def step_impl(context):
+    assert context.driver.find_element(By.CSS_SELECTOR, ".title").text == "Products"
+
+@when(u'verifico os dados do produto Sauce Labs Backpack')
+def step_impl(context):
+    assert context.driver.find_element(By.ID, "item_4_title_link").text == "Sauce Labs Backpack"
+    assert context.driver.find_element(By.CSS_SELECTOR, ".inventory_item:nth-child(1) .inventory_item_price").text == "$29.99"
+
+@when(u'adiciono o produto ao carrinho')
+def step_impl(context):
+    context.driver.find_element(By.ID, "add-to-cart-sauce-labs-backpack").click()
+
+@when(u'acesso o carrinho')
+def step_impl(context):
+    context.driver.find_element(By.CLASS_NAME, "shopping_cart_link").click()
+    assert context.driver.find_element(By.CSS_SELECTOR, ".title").text == "Your Cart"
+
+@when(u'removo o produto do carrinho')
+def step_impl(context):
+    context.driver.find_element(By.ID, "remove-sauce-labs-backpack").click()
+
+@when(u'faço logout')
+def step_impl(context):
+    context.driver.find_element(By.ID, "react-burger-menu-btn").click()
+    context.driver.find_element(By.ID, "logout_sidebar_link").click()
+
 @then(u'sou direcionado para pagina Home')
 def step_impl(context):
     assert context.driver.find_element(By.CSS_SELECTOR, ".title").text == "Products"
@@ -71,6 +98,26 @@ def step_impl(context):
 @then(u'exibe a {mensagem} de erro no login')
 def step_impl(context, mensagem):
     assert context.driver.find_element(By.CSS_SELECTOR, "h3").text == mensagem
+
+    context.driver.quit()
+
+@then(u'o produto "Sauce Labs Backpack" é adicionado ao carrinho com sucesso')
+def step_impl(context):
+    assert context.driver.find_element(By.CLASS_NAME, "shopping_cart_badge").text == "1"
+
+    context.driver.quit()
+
+@then(u'os detalhes do produto "Sauce Labs Backpack" são exibidos corretamente no carrinho')
+def step_impl(context):
+    assert context.driver.find_element(By.CLASS_NAME, "cart_quantity").text == "1"
+    assert context.driver.find_element(By.CLASS_NAME, "inventory_item_name").text == "Sauce Labs Backpack"
+    assert context.driver.find_element(By.CLASS_NAME, "inventory_item_price").text == "$29.99"
+
+    context.driver.quit()
+
+@then(u'o usuário é redirecionado para a página de login')
+def step_impl(context):
+    context.driver.find_element(By.CSS_SELECTOR, "*[data-test=\"username\"]").click()
 
     context.driver.quit()
 

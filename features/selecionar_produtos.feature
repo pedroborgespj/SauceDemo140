@@ -41,3 +41,31 @@ Feature: Selecionar Produto
         | 06 | juca          | <branco>      | Epic sadface: Password is required                                           |
         | 07 | <branco>      | <branco>      | Epic sadface: Username is required                                           |
         | 08 | <branco>      | laranja       | Epic sadface: Username is required                                           |
+    
+    Scenario: Adicionar produto 'Sauce Labs Backpack' ao carrinho
+        Given que acesso o site Sauce Demo
+        When preencho os campos de login com usuario standard_user e senha secret_sauce
+        And acesso a página de produtos
+        And verifico os dados do produto Sauce Labs Backpack
+        And adiciono o produto ao carrinho
+        Then o produto "Sauce Labs Backpack" é adicionado ao carrinho com sucesso
+    
+    Scenario: Validar detalhes do produto no carrinho
+        Given que acesso o site Sauce Demo
+        When preencho os campos de login com usuario standard_user e senha secret_sauce
+        And acesso a página de produtos
+        And verifico os dados do produto Sauce Labs Backpack
+        And adiciono o produto ao carrinho
+        And acesso o carrinho
+        Then os detalhes do produto "Sauce Labs Backpack" são exibidos corretamente no carrinho
+    
+    Scenario: Remover produto do carrinho e fazer logout
+        Given que acesso o site Sauce Demo
+        When preencho os campos de login com usuario standard_user e senha secret_sauce
+        And acesso a página de produtos
+        And verifico os dados do produto Sauce Labs Backpack
+        And adiciono o produto ao carrinho
+        And acesso o carrinho
+        And removo o produto do carrinho
+        And faço logout
+        Then o usuário é redirecionado para a página de login
